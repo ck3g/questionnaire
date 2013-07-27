@@ -3,3 +3,4 @@ ru:
   auth:
     buttons:
       sign_up: Зарегистрироваться
+      sign_in: Войти
