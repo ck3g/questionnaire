@@ -1,6 +1,28 @@
 
 ru:
-  auth:
-    buttons:
-      sign_up: Зарегистрироваться
+  helpers:
+    auth:
       sign_in: Войти
+      sign_up: Зарегистрироваться
+      sign_out: Выйти
+      profile: Профайл
+      forgot_your_password: Забыли пароль?
+      send_me_reset_password_instructions: Выслать мне инструкции по сбросу пароля
+      cancel_my_account: Удалить мою запись
+    submit:
+      user:
+        update: Обновить
+      journey:
+        create: Сообщить о поездке
+      application:
+        create: Подтвердить заявку
+  auth:
+    sign_in: Вход
+    sign_up: Регистрация
+    forgot_your_password: Забыли пароль?
+    edit_profile: Редактирование профайла
+    unhappy: Разочарованы?
+    cancel_my_account: Удаление учетной записи
+    leave_blank_if_dont_want_to_change: Оставьте пустым, если не хотите менять пароль
+    we_need_you_current_password_to_confirm_changes: Необходимо ввести текущий пароль для подтверждения изменений
+

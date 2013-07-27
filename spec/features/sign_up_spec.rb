@@ -8,7 +8,7 @@ feature 'Sign Up' do
       fill_in 'user_email', with: 'bruce@wayne.com'
       fill_in 'user_password', with: 'secret'
       fill_in 'user_password_confirmation', with: 'secret'
-      click_button I18n.t('auth.buttons.sign_up')
+      click_button I18n.t('helpers.auth.sign_up')
     end
 
     expect(User.count).to eq 1

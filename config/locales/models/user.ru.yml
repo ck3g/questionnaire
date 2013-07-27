@@ -1,0 +1,9 @@
+
+ru:
+  activerecord:
+    attributes:
+      user:
+        remember_me: Запомнить меня
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение

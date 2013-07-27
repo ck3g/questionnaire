@@ -9,7 +9,7 @@ feature 'Sign in' do
     within '#new_user' do
       fill_in 'user_email', with: 'bruce@wayne.com'
       fill_in 'user_password', with: 'secret'
-      click_button I18n.t('auth.buttons.sign_in')
+      click_button I18n.t('helpers.auth.sign_in')
     end
 
     expect(current_path).to eq '/'
