@@ -7,6 +7,9 @@ gem 'haml-rails'
 gem 'anjlab-bootstrap-rails', '>= 2.3', require: 'bootstrap-rails'
 gem 'meta-tags', require: 'meta_tags'
 gem 'simple_form', '~> 3.0.0.rc'
+gem 'devise', '>= 3.0.0'
+
+gem 'russian'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
