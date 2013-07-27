@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130727121624) do
+ActiveRecord::Schema.define(version: 20130727123809) do
+
+  create_table "questionnaires", force: true do |t|
+    t.string   "name",         null: false
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questionnaires", ["published_at"], name: "index_questionnaires_on_published_at", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
