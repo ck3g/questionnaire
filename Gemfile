@@ -10,6 +10,7 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise', '>= 3.0.0'
 
 gem 'russian'
+gem 'bitmask_attributes', github: 'jigfox/bitmask_attributes', branch: 'rails4'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'

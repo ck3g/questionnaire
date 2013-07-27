@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/jigfox/bitmask_attributes.git
+  revision: 8eb9f8c2aa541c7584c7079d2b5ce80896e86198
+  branch: rails4
+  specs:
+    bitmask_attributes (0.4.0)
+      activerecord (>= 3.0, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -253,6 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 2.3)
+  bitmask_attributes!
   bullet
   capistrano
   capistrano-recipes

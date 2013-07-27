@@ -4,4 +4,10 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  bitmask :roles, as: %i[admin]
+
+  def admin?
+    roles?(:admin)
+  end
 end
