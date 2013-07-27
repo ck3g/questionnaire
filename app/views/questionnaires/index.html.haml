@@ -1,0 +1,6 @@
+%h2= t('questionnaires.title')
+
+#questionnaires
+  - @questionnaires.each do |questionnaire|
+    .row
+      = questionnaire.name

@@ -26,3 +26,6 @@ ru:
     leave_blank_if_dont_want_to_change: Оставьте пустым, если не хотите менять пароль
     we_need_you_current_password_to_confirm_changes: Необходимо ввести текущий пароль для подтверждения изменений
 
+  questionnaires:
+    title: Вопросники
+
