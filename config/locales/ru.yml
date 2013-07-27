@@ -12,10 +12,8 @@ ru:
     submit:
       user:
         update: Обновить
-      journey:
-        create: Сообщить о поездке
-      application:
-        create: Подтвердить заявку
+      questionnaire:
+        create: Создать
   auth:
     sign_in: Вход
     sign_up: Регистрация

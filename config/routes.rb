@@ -1,7 +1,7 @@
 Qn::Application.routes.draw do
   devise_for :users
 
-  resources :questionnaires, only: [:index]
+  resources :questionnaires
 
   root 'welcome#index'
 end
