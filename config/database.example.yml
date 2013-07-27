@@ -1,0 +1,16 @@
+common: &common
+  adapter: postresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: '123'
+
+development:
+  <<: *common
+  database: questionnaire_development
+
+test:
+  database: questionnaire_test
+
+production:
+  database: questionnaire_development
