@@ -1,4 +1,4 @@
-Questionnaire::Application.routes.draw do
+Qn::Application.routes.draw do
   devise_for :users
 
   root 'welcome#index'

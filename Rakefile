@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Questionnaire::Application.load_tasks
+Qn::Application.load_tasks

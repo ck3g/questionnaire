@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Questionnaire::Application.config.secret_key_base = '55497e865e213215e6b1cdffc2d29225597e2dd52f8d1936dd430e2447002b8a7e5f3da97a951de5a651cbbba5ecb34e035131fdbfe99360c88d90dbda5822ea'
+Qn::Application.config.secret_key_base = '55497e865e213215e6b1cdffc2d29225597e2dd52f8d1936dd430e2447002b8a7e5f3da97a951de5a651cbbba5ecb34e035131fdbfe99360c88d90dbda5822ea'
