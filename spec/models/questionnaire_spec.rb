@@ -5,6 +5,10 @@ describe Questionnaire do
     expect(create :questionnaire).to be_valid
   end
 
+  describe '.associations' do
+    it { should have_many(:questions).dependent(:destroy) }
+  end
+
   describe '.validations' do
     context 'when valid' do
       subject { create :questionnaire }

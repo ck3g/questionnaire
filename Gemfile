@@ -36,7 +36,6 @@ group :development do
   gem 'html2haml'
   gem 'rails_best_practices'
   gem 'thin'
-  gem 'pry-rails'
   gem 'zeus'
   gem 'bullet'
 end
@@ -44,6 +43,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
 end
 
 group :test do

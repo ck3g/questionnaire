@@ -1,1 +1,19 @@
 = render 'form', questionnaire: @questionnaire
+
+#questions
+  - @questionnaire.questions.each do |question|
+    .row{id: dom_id(question)}
+      %p= question.title
+      .answers
+        - question.answers.each do |answer|
+          = answer.content
+
+= simple_form_for [@questionnaire, @question], html: { class: 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :description
+  - 3.times do |i|
+    = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }"
+    = label_tag do
+      = check_box_tag "question[answers][][correct]", '1', false, id: "question_answer_correct_#{ i }"
+      = 'Correct?'
+  = f.button :submit
