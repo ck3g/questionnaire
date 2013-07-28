@@ -1,4 +1,6 @@
 class QuestionnairesController < ApplicationController
+  authorize_resource
+
   before_action :find_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def index

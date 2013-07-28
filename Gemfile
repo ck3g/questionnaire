@@ -8,6 +8,7 @@ gem 'anjlab-bootstrap-rails', '>= 2.3', require: 'bootstrap-rails'
 gem 'meta-tags', require: 'meta_tags'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise', '>= 3.0.0'
+gem 'cancan'
 
 gem 'russian'
 gem 'bitmask_attributes', github: 'jigfox/bitmask_attributes', branch: 'rails4'

@@ -7,6 +7,7 @@ feature 'Manage questionnaires', %q{
   given!(:admin) { create :admin, email: 'admin@example.com' }
 
   scenario 'can create questionnaire' do
+    sign_in_as 'admin@example.com', 'secret'
     visit '/questionnaires/new'
 
     within '#new_questionnaire' do
@@ -16,5 +17,12 @@ feature 'Manage questionnaires', %q{
 
     expect(current_path).to eq questionnaire_path(Questionnaire.last)
     expect(page).to have_content I18n.t(:has_been_created)
+  end
+
+  scenario 'guest cannot create questionnaire' do
+    visit '/questionnaires/new'
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content I18n.t('unauthorized.manage.all')
   end
 end
