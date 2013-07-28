@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130728161402) do
+ActiveRecord::Schema.define(version: 20130728170148) do
 
   create_table "answers", force: true do |t|
     t.text     "content",                 null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20130728161402) do
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+
+  create_table "question_sequences", force: true do |t|
+    t.integer  "parent_id",  null: false
+    t.integer  "child_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_sequences", ["parent_id", "child_id"], name: "index_question_sequences_on_parent_id_and_child_id", unique: true, using: :btree
 
   create_table "questionnaires", force: true do |t|
     t.string   "name",         null: false

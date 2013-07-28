@@ -7,6 +7,9 @@ feature 'Manage questions', %q{
 } do
   given!(:admin) { create :admin, email: 'admin@example.com' }
   given!(:questionnaire) { create :questionnaire }
+  given!(:question1) { create :question, questionnaire: questionnaire }
+  given!(:question2) { create :question, questionnaire: questionnaire }
+  given!(:question3) { create :question, questionnaire: questionnaire }
 
   scenario 'can add more questions to questionnaire' do
     sign_in_as 'admin@example.com', 'secret'
@@ -27,6 +30,26 @@ feature 'Manage questions', %q{
     within "#question_#{ Question.last.id }" do
       expect(page).to have_content 'Answer 1'
       expect(page).to have_content 'Answer 2'
+    end
+  end
+
+  scenario 'can choose parent questions' do
+    sign_in_as 'admin@example.com', 'secret'
+    visit edit_questionnaire_path(questionnaire)
+
+    within '#new_question' do
+      fill_in 'question_title', with: 'Question title'
+      fill_in 'question_answer_content_0', with: 'Answer 1'
+      fill_in 'question_answer_content_1', with: 'Answer 2'
+      select question1.title, from: 'question_possible_parents'
+      select question2.title, from: 'question_possible_parents'
+      click_button I18n.t('helpers.submit.question.create')
+    end
+
+    within "#question_#{ Question.last.id } .parents" do
+      expect(page).to have_content question1.title
+      expect(page).to have_content question2.title
+      expect(page).to_not have_content question3.title
     end
   end
 end

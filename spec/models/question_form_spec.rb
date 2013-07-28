@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe QuestionForm do
   let(:questionnaire) { create :questionnaire }
+  let!(:parent1) { create :question, questionnaire: questionnaire }
+  let!(:parent2) { create :question, questionnaire: questionnaire }
   let(:question_params) do
     {
       title: 'Question title',
@@ -11,7 +13,8 @@ describe QuestionForm do
         { content: 'Answer 2' },
         { content: 'Answer 3' },
         { content: '' }
-      ]
+      ],
+      possible_parents: ["", parent1.id, parent2.id]
     }
   end
 
@@ -52,8 +55,15 @@ describe QuestionForm do
     it 'creates new question' do
       expect { question_form.save }.to change { Question.count }.by(1)
     end
+
     it 'creates 3 new answers' do
       expect { question_form.save }.to change { Answer.count }.by(3)
+    end
+
+    it 'creates two parents' do
+      expect {
+        question_form.save
+      }.to change { question_form.question.parents.count }.by(2)
     end
   end
 end

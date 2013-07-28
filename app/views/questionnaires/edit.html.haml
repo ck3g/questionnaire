@@ -7,10 +7,16 @@
       .answers
         - question.answers.each do |answer|
           = answer.content
+      .parents
+        - question.parents.each do |parent|
+          = parent.title
 
 = simple_form_for [@questionnaire, @question], html: { class: 'form-horizontal' } do |f|
   = f.input :title
   = f.input :description
   - 3.times do |i|
     = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }"
+  = f.input :possible_parents, as: :select, input_html: { multiple: true },
+    collection: collection_of_parents(@questionnaire)
   = f.button :submit
+

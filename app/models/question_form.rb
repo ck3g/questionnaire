@@ -34,7 +34,7 @@ class QuestionForm
 
   def save
     if valid?
-      @question.save!
+      persist!
       true
     else
       false
@@ -42,6 +42,13 @@ class QuestionForm
   end
 
   private
+  def persist!
+    @question.save!
+    params[:possible_parents].select(&:present?).each do |parent_id|
+      QuestionSequence.create! parent_id: parent_id, child_id: @question.id
+    end
+  end
+
   def should_have_at_least_2_answers
     if @question.answers.size < REQUIRED_ANSWERS
       errors.add(

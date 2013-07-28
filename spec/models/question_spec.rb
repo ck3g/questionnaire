@@ -8,6 +8,10 @@ describe Question do
   describe '.associations' do
     it { should belong_to :questionnaire }
     it { should have_many(:answers).dependent(:destroy) }
+    it { should have_many(:parent_sequences).dependent(:destroy) }
+    it { should have_many(:child_sequences).dependent(:destroy) }
+    it { should have_many :parents }
+    it { should have_many :children }
   end
 
   describe '.validations' do
