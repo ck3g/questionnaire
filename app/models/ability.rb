@@ -16,6 +16,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      cannot :read, Questionnaire, published_at: nil
     end
     #
     # The first argument to `can` is the action you are giving the user

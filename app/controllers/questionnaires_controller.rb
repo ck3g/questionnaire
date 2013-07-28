@@ -4,7 +4,7 @@ class QuestionnairesController < ApplicationController
   before_action :find_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questionnaires = Questionnaire.all
+    @questionnaires = Questionnaire.accessible_by(current_ability)
   end
 
   def show

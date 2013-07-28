@@ -12,4 +12,13 @@ describe Questionnaire do
       it { should validate_uniqueness_of :name }
     end
   end
+
+  describe '.published' do
+    let!(:published) { create :questionnaire }
+    let!(:unpublished) { create :unpublished_questionnaire }
+
+    it 'selects only publushed questionnaires' do
+      expect(Questionnaire.published).to eq [published]
+    end
+  end
 end
