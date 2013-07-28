@@ -9,13 +9,21 @@ describe QuestionForm do
       answers: [
         { content: 'Wrong answer 1', correct: false },
         { content: 'Right answer', correct: true },
-        { content: 'Wrong answer 2', correct: false }
+        { content: 'Wrong answer 2', correct: false },
+        { content: '', correct: false }
       ]
     }
   end
 
-  let(:invalid_params) do
+  let(:no_title_params) do
     {
+      answers: []
+    }
+  end
+
+  let(:no_answers_params) do
+    {
+      title: 'Question',
       answers: []
     }
   end
@@ -27,8 +35,15 @@ describe QuestionForm do
     end
 
     context 'when not valid' do
-      subject { QuestionForm.new(questionnaire, invalid_params) }
-      it { should be_invalid }
+      context 'when title is blank' do
+        subject { QuestionForm.new(questionnaire, no_title_params) }
+        it { should be_invalid }
+      end
+
+      context 'when answers is blank' do
+        subject { QuestionForm.new(questionnaire, no_answers_params)}
+        it { should be_invalid }
+      end
     end
   end
 

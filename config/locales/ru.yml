@@ -1,5 +1,9 @@
 
 ru:
+  activerecord:
+    errors:
+      answers:
+        should_have_at_least: "Должно быть хотя бы %{count} ответа"
   helpers:
     auth:
       sign_in: Войти
