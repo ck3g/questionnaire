@@ -5,6 +5,7 @@ feature 'Manage questionnaires', %q{
   And I want to create questionnaire
 } do
   given!(:admin) { create :admin, email: 'admin@example.com' }
+  given!(:questionnaire) { create :questionnaire, name: 'I am a new questionnaire' }
 
   scenario 'can create questionnaire' do
     sign_in_as 'admin@example.com', 'secret'
@@ -24,5 +25,19 @@ feature 'Manage questionnaires', %q{
 
     expect(current_path).to eq root_path
     expect(page).to have_content I18n.t('unauthorized.manage.all')
+  end
+
+  scenario 'admin can edit questionnaire' do
+    sign_in_as 'admin@example.com', 'secret'
+    visit edit_questionnaire_path(questionnaire)
+
+    fill_in 'questionnaire_name', with: 'I am an edited questionnaire'
+    click_button I18n.t('helpers.submit.questionnaire.update')
+
+    expect(current_path).to eq questionnaire_path(questionnaire)
+    expect(page).to have_content I18n.t(:has_been_updated)
+    within 'h2' do
+      expect(page).to have_content 'I am an edited questionnaire'
+    end
   end
 end

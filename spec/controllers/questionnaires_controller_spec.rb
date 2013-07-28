@@ -21,4 +21,11 @@ describe QuestionnairesController do
     it { should respond_with :success }
     it { should render_template :new }
   end
+
+  describe 'GET #edit' do
+    let!(:questionnaire) { create :questionnaire }
+    before { get :edit, id: questionnaire }
+    it { should respond_with :success }
+    it { should render_template :edit }
+  end
 end

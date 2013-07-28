@@ -24,6 +24,18 @@ class QuestionnairesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @questionnaire.update_attributes questionnaire_params
+      redirect_to @questionnaire, notice: t(:has_been_updated)
+    else
+      render :edit
+    end
+  end
+
   private
   def find_questionnaire
     @questionnaire = Questionnaire.find params[:id]
