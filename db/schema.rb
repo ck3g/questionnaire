@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130728142437) do
+ActiveRecord::Schema.define(version: 20130728161402) do
 
   create_table "answers", force: true do |t|
-    t.text     "content",                     null: false
-    t.boolean  "correct",     default: false
+    t.text     "content",                 null: false
     t.integer  "question_id"
-    t.integer  "points",      default: 0,     null: false
+    t.integer  "points",      default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["correct"], name: "index_answers_on_correct", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "questionnaires", force: true do |t|

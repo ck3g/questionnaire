@@ -23,8 +23,7 @@ class QuestionForm
 
     params[:answers].each do |answer|
       if answer[:content].present?
-        @question.answers.new(content: answer[:content],
-                              correct: answer[:correct] == '1')
+        @question.answers.new(content: answer[:content])
       end
     end
   end

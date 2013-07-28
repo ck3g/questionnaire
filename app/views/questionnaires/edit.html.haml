@@ -13,7 +13,4 @@
   = f.input :description
   - 3.times do |i|
     = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }"
-    = label_tag do
-      = check_box_tag "question[answers][][correct]", '1', false, id: "question_answer_correct_#{ i }"
-      = 'Correct?'
   = f.button :submit

@@ -7,10 +7,10 @@ describe QuestionForm do
       title: 'Question title',
       description: 'Question description',
       answers: [
-        { content: 'Wrong answer 1', correct: false },
-        { content: 'Right answer', correct: true },
-        { content: 'Wrong answer 2', correct: false },
-        { content: '', correct: false }
+        { content: 'Answer 1' },
+        { content: 'Answer 2' },
+        { content: 'Answer 3' },
+        { content: '' }
       ]
     }
   end

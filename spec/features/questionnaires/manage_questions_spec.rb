@@ -15,10 +15,8 @@ feature 'Manage questions', %q{
     within '#new_question' do
       fill_in 'question_title', with: 'Question title'
       fill_in 'question_description', with: 'Question description'
-      fill_in 'question_answer_content_0', with: 'Wrong answer 1'
-      fill_in 'question_answer_content_1', with: 'Right answer'
-      check 'question_answer_correct_1'
-      fill_in 'question_answer_content_2', with: 'Wrong answer 2'
+      fill_in 'question_answer_content_0', with: 'Answer 1'
+      fill_in 'question_answer_content_1', with: 'Answer 2'
       click_button I18n.t('helpers.submit.question.create')
     end
 
@@ -27,9 +25,8 @@ feature 'Manage questions', %q{
     end
 
     within "#question_#{ Question.last.id }" do
-      expect(page).to have_content 'Wrong answer 1'
-      expect(page).to have_content 'Right answer'
-      expect(page).to have_content 'Wrong answer 2'
+      expect(page).to have_content 'Answer 1'
+      expect(page).to have_content 'Answer 2'
     end
   end
 end
