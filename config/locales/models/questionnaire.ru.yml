@@ -1,0 +1,6 @@
+
+ru:
+  activerecord:
+    attributes:
+      questionnaire:
+        name: Название

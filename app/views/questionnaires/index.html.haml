@@ -1,6 +1,9 @@
 %h2= t('questionnaires.title')
 
 #questionnaires
-  - @questionnaires.each do |questionnaire|
-    .row
-      = questionnaire.name
+  %table.table
+    - @questionnaires.each do |questionnaire|
+      %tr
+        %td= questionnaire.name
+        %td= link_to 'Start', questionnaire_path(questionnaire), class: 'btn'
+

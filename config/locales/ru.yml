@@ -34,6 +34,11 @@ ru:
   questionnaires:
     title: Вопросники
 
-  has_been_created: Has been created successfully
-  has_been_updated: Has been updated successfully
+  questions:
+    title: Вопросы
+    answer_number: "Ответ №%{number}"
+
+  has_been_created: Успешно создан
+  has_been_updated: Успешно обновлен
+  are_you_sure: Вы уверены?
 

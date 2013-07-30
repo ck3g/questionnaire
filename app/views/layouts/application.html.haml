@@ -2,9 +2,28 @@
 %html
   %head
     %title Questionnaire
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=devise-width, initial-scale=1.0'}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = render 'shared/flashes'
-    = yield
+    .container
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          = nav_link_to t('questionnaires.title'), questionnaires_path
+          - if user_signed_in?
+            = nav_link_to t('helpers.auth.profile'), edit_user_registration_path
+            %li= link_to t('helpers.auth.sign_out'), destroy_user_session_path
+          - else
+            = nav_link_to t('helpers.auth.sign_in'), new_user_session_path
+        %h3.muted= link_to 'Questionnaire', root_path
+
+      %hr
+
+      .row-fluid
+        = render 'shared/flashes'
+        = yield
+
+      .footer
+        %p &copy; Company 2013

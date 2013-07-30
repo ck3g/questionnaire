@@ -1,22 +1,40 @@
 = render 'form', questionnaire: @questionnaire
 
 #questions
+  %h3
+    = t('questions.title')
+    = link_to '#new_question', class: 'btn' do
+      %i.icon-plus
+
   - @questionnaire.questions.each do |question|
     .row{id: dom_id(question)}
-      %p= question.title
-      .answers
-        - question.answers.each do |answer|
-          = answer.content
-      .parents
-        - question.parents.each do |parent|
-          = parent.title
+      .well
+        %h5= question.title
+        .answers
+          %ul
+            - question.answers.each do |answer|
+              %li= answer.content
+        - if question.parents.present?
+          .parents
+            %h6= Question.human_attribute_name(:parents)
+            %ul
+              - question.parents.each do |parent|
+                %li= parent.title
 
-= simple_form_for [@questionnaire, @question], html: { class: 'form-horizontal' } do |f|
+- defaults = { input_html: { class: 'input-xxlarge' } }
+- html = { class: 'form-horizontal' }
+= simple_form_for [@questionnaire, @question], html: html, defaults: defaults do |f|
   = f.input :title
   = f.input :description
   - 3.times do |i|
-    = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }"
+    .control-group
+      %label.control-label
+        = t('questions.answer_number', number: i + 1)
+      .controls
+        = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }", class: 'input-xxlarge'
+
   = f.input :possible_parents, as: :select, input_html: { multiple: true },
     collection: collection_of_parents(@questionnaire)
-  = f.button :submit
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
 

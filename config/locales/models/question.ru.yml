@@ -1,0 +1,10 @@
+
+ru:
+  activerecord:
+    attributes:
+      question:
+        title: Заголовок
+        description: Описание
+        possible_parents: Предшественники
+        parents: Педшествущие вопросы
+
