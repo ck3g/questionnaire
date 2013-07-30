@@ -6,7 +6,7 @@
     = link_to '#new_question', class: 'btn' do
       %i.icon-plus
 
-  - @questionnaire.questions.each do |question|
+  - @questionnaire.question_list.each do |question|
     .row{id: dom_id(question)}
       .well
         %h5= question.title
