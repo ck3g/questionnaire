@@ -1,9 +1,17 @@
-%h2= t('questionnaires.title')
+%h2
+  = t('questionnaires.title')
+  - if can? :create, Questionnaire
+    = link_to new_questionnaire_path, class: 'btn' do
+      %i.icon-plus
 
 #questionnaires
   %table.table
     - @questionnaires.each do |questionnaire|
       %tr
         %td= questionnaire.name
-        %td= link_to 'Start', questionnaire_path(questionnaire), class: 'btn'
+        %td
+          = link_to 'Start', questionnaire_path(questionnaire), class: 'btn'
+          - if can? :manage, questionnaire
+            = link_to edit_questionnaire_path(questionnaire), class: 'btn' do
+              %i.icon-edit
 
