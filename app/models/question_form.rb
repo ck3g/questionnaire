@@ -21,6 +21,7 @@ class QuestionForm
     @question.title = params[:title]
     @question.description = params[:description]
 
+    params[:answers] ||= []
     params[:answers].each do |answer|
       if answer[:content].present?
         @question.answers.new(content: answer[:content])
@@ -39,6 +40,14 @@ class QuestionForm
     else
       false
     end
+  end
+
+  def errors?(field)
+    errors[field].present?
+  end
+
+  def errors_for(field)
+    errors[field].join ', ' if errors? field
   end
 
   private

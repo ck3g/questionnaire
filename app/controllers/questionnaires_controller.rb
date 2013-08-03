@@ -26,6 +26,7 @@ class QuestionnairesController < ApplicationController
   end
 
   def edit
+    @question_form = QuestionForm.new @questionnaire, {}
   end
 
   def update

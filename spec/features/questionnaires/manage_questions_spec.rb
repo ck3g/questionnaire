@@ -52,4 +52,19 @@ feature 'Manage questions', %q{
       expect(page).to_not have_content question3.title
     end
   end
+
+  scenario 'receives an error when question fields is empty' do
+    sign_in_as 'admin@example.com', 'secret'
+    visit edit_questionnaire_path(questionnaire)
+
+    within '#new_question' do
+      click_button I18n.t('helpers.submit.question.create')
+    end
+
+    within '#new_question' do
+      expect(page).to have_content I18n.t('activerecord.errors.messages.blank')
+      expect(page).to have_content I18n.t(
+        'activerecord.errors.answers.should_have_at_least', count: 2)
+    end
+  end
 end

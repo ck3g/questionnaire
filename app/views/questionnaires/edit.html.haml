@@ -1,4 +1,4 @@
-= render 'form', questionnaire: @questionnaire
+= render 'questionnaires/form', questionnaire: @questionnaire
 
 #questions
   %h3
@@ -24,14 +24,24 @@
 - defaults = { input_html: { class: 'input-xxlarge' } }
 - html = { class: 'form-horizontal' }
 = simple_form_for [@questionnaire, @question], html: html, defaults: defaults do |f|
-  = f.input :title
+
+  .control-group{class: ('error' if @question_form.try :errors?, :title)}
+    = f.label :title
+    .controls
+      = f.input_field :title
+      - if @question_form.try :errors?, :title
+        %span.help-inline= @question_form.errors_for :title
+
   = f.input :description
+
   - 3.times do |i|
-    .control-group
+    .control-group{class: ('error' if i.zero? && @question_form.try(:errors?, :answers))}
       %label.control-label
         = t('questions.answer_number', number: i + 1)
       .controls
         = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }", class: 'input-xxlarge'
+        - if @question_form.try :errors?, :answers
+          %span.help-inline= @question_form.errors_for :answers
 
   = f.input :possible_parents, as: :select, input_html: { multiple: true },
     collection: collection_of_parents(@questionnaire)

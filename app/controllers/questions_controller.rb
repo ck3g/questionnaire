@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
       redirect_to edit_questionnaire_path(@questionnaire), notice: t(:has_been_created)
     else
       @question = @question_form.question
-      render 'questionnaire/edit'
+      render 'questionnaires/edit'
     end
   end
 
