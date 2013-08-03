@@ -1,0 +1,6 @@
+.control-group
+  %label.control-label {{label}}
+  .controls
+    %input.answer-field.answer{type: 'text', name: 'question[answers][][content]', id: '{{id}}'}
+    %a.btn.btn-danger.js-remove-answer{href: '#remove-answer'}
+      %i.icon-trash.icon-white

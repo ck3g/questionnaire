@@ -34,14 +34,19 @@
 
   = f.input :description
 
-  - 3.times do |i|
-    .control-group{class: ('error' if i.zero? && @question_form.try(:errors?, :answers))}
-      %label.control-label
-        = t('questions.answer_number', number: i + 1)
-      .controls
-        = text_field_tag "question[answers][][content]", '', id: "question_answer_content_#{ i }", class: 'input-xxlarge'
-        - if @question_form.try :errors?, :answers
-          %span.help-inline= @question_form.errors_for :answers
+  .control-group{class: ('error' if @question_form.try :errors?, :answers)}
+    %label.control-label= t('questions.answer_number', number: 1)
+    .controls
+      = text_field_tag "question[answers][][content]", '', id: "question_answer_content_0", class: 'large-answer-field answer'
+      - if @question_form.try :errors?, :answers
+        %span.help-inline= @question_form.errors_for :answers
+
+  .control-group
+    %label.control-label= t('questions.answer_number', number: 2)
+    .controls
+      = text_field_tag "question[answers][][content]", '', id: "question_answer_content_1", class: 'answer-field answer'
+      = link_to '#add-answer', class: 'btn', id: 'js-add-answer', data: { :'label-pattern' => answer_label_pattern} do
+        %i.icon-plus
 
   = f.input :possible_parents, as: :select, input_html: { multiple: true },
     collection: collection_of_parents(@questionnaire)
