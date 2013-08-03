@@ -2,6 +2,7 @@ class QuestionnairesController < ApplicationController
   authorize_resource
 
   before_action :find_questionnaire, only: [:show, :edit, :update, :destroy]
+  before_action :initialize_question, only: [:edit, :update]
 
   def index
     @questionnaires = Questionnaire.accessible_by(current_ability)
@@ -25,7 +26,6 @@ class QuestionnairesController < ApplicationController
   end
 
   def edit
-    @question = Question.new
   end
 
   def update
@@ -39,6 +39,10 @@ class QuestionnairesController < ApplicationController
   private
   def find_questionnaire
     @questionnaire = Questionnaire.find params[:id]
+  end
+
+  def initialize_question
+    @question = Question.new
   end
 
   def questionnaire_params

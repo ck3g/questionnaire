@@ -40,4 +40,14 @@ feature 'Manage questionnaires', %q{
       expect(page).to have_content 'I am an edited questionnaire'
     end
   end
+
+  scenario 'raises error than questionnaire name is blank' do
+    sign_in_as 'admin@example.com', 'secret'
+    visit edit_questionnaire_path(questionnaire)
+
+    fill_in 'questionnaire_name', with: ''
+    click_button I18n.t('helpers.submit.questionnaire.update')
+
+    expect(page).to have_content I18n.t('activerecord.errors.messages.blank')
+  end
 end
