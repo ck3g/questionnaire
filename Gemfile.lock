@@ -104,6 +104,10 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    handlebars_assets (0.14.1)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
     highline (1.6.19)
     hike (1.2.3)
     hpricot (0.8.6)
@@ -276,6 +280,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   haml-rails
+  handlebars_assets
   html2haml
   jquery-rails
   launchy
