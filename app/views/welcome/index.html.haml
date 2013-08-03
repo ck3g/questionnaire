@@ -1,4 +1,5 @@
 .jumbotron
   %h1= t('questionnaires.title')
   %p.lead Краткое описание проекта
-  = link_to 'Зарегистрироваться сейчас', new_user_registration_path, class: 'btn btn-large btn-success'
+  - unless user_signed_in?
+    = link_to 'Зарегистрироваться сейчас', new_user_registration_path, class: 'btn btn-large btn-success'
