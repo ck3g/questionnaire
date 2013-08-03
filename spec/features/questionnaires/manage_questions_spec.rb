@@ -53,6 +53,19 @@ feature 'Manage questions', %q{
     end
   end
 
+  scenario 'can remove question' do
+    sign_in_as 'admin@example.com', 'secret'
+    visit edit_questionnaire_path questionnaire
+
+
+    question_id = question1.id
+    within "#question_#{ question_id }" do
+      find('.btn-danger').click
+    end
+
+    expect(Question.where(id: question_id)).to be_blank
+  end
+
   scenario 'receives an error when question fields is empty' do
     sign_in_as 'admin@example.com', 'secret'
     visit edit_questionnaire_path(questionnaire)

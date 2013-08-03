@@ -13,6 +13,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question = @questionnaire.questions.find params[:id]
+    @question.destroy
+    redirect_to edit_questionnaire_path @questionnaire
+  end
+
   private
   def find_questionnaire
     @questionnaire = Questionnaire.find params[:questionnaire_id]

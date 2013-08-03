@@ -9,7 +9,11 @@
   - @questionnaire.question_list.each do |question|
     .row{id: dom_id(question)}
       .well
-        %h5= question.title
+        %h5
+          = question.title
+          .pull-right
+            = link_to [@questionnaire, question], method: :delete, data: { confirm: t(:are_you_sure) }, class: 'btn btn-danger' do
+              %i.icon-trash.icon-white
         .answers
           %ul
             - question.answers.each do |answer|
