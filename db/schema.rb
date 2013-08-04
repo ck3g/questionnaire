@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130728170148) do
+ActiveRecord::Schema.define(version: 20130804044608) do
 
   create_table "answers", force: true do |t|
     t.text     "content",                 null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20130728170148) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   add_index "questionnaires", ["published_at"], name: "index_questionnaires_on_published_at", using: :btree

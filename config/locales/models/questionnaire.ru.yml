@@ -4,3 +4,4 @@ ru:
     attributes:
       questionnaire:
         name: Название
+        description: Описание
