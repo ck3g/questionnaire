@@ -21,6 +21,7 @@ ru:
         update: Обновить
       question:
         create: Создать
+    back: Назад
   auth:
     sign_in: Вход
     sign_up: Регистрация
@@ -33,6 +34,9 @@ ru:
 
   questionnaires:
     title: Вопросники
+    helpers:
+      start: Начать
+      back: Вернуться
 
   questions:
     title: Вопросы

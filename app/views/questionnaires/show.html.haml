@@ -1,3 +1,13 @@
 %h2= @questionnaire.name
 
-%p= simple_format @questionnaire.description
+.row-fluid
+  = simple_format @questionnaire.description
+
+.row-fluid
+  .span12
+    .span1.offset5
+      = link_to t('questionnaires.helpers.start'), '#', class: 'btn btn-success'
+    .span1
+      = link_to t('questionnaires.helpers.back'), questionnaires_path, class: "btn btn-link"
+
+
