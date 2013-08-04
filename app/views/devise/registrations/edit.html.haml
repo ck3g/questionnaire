@@ -1,4 +1,6 @@
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-auth' }) do |f|
+- defaults = { label: false }
+- html = { method: :put, class: 'form-auth' }
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: html, defaults: defaults) do |f|
   %h2.form-auth-heading= t('auth.edit_profile')
   = f.error_notification
   = f.input :email, required: true, autofocus: true
