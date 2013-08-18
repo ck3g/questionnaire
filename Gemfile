@@ -33,6 +33,8 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-recipes'
   gem 'capistrano_colors'
+  gem 'capistrano-unicorn', '~> 0.1.10', require: false
+  gem 'capistrano-rbenv', :require => false
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rails_best_practices'
@@ -54,4 +56,8 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'selenium-webdriver'
+end
+
+group :development, :production do
+  gem "unicorn", '~> 4.6.3'
 end
